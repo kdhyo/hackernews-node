@@ -1,8 +1,3 @@
-// 1
-const { PrismaClient } = require("@prisma/client");
-// 2
-const prisma = new PrismaClient();
-
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { APP_SECRET, getUserId } from "../utils";
