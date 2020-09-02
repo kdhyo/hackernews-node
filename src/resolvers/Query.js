@@ -5,11 +5,19 @@ async function feed(parent, args, context, info) {
       }
     : {};
 
-  const link = await context.prisma.link.findMany({
+  const links = await context.prisma.link.findMany({
     where,
+    skip: args.skip,
+    take: args.take,
+    orderBy: args.orderBy,
   });
 
-  return link;
+  const count = await context.prisma.link.count({ where });
+
+  return {
+    links,
+    count,
+  };
 }
 
 module.exports = {
